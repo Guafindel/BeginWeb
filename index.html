@@ -23,22 +23,34 @@
        target.style.color = 'white';
        this.value = 'DAY';
 
-       var links = document.querySelectorAll('a');
-       var i = 0;
-       while(i < links.length) {
-         links[i].style.color = 'powderblue';
-         i++;
-       }
+      //  var links = document.querySelectorAll('a');
+      //  var i = 0;
+      //  while(i < links.length) {
+      //    links[i].style.color = 'powderblue';
+      //    i++;
+      //  }
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while(i < alist.length) {
+          alist[i].style.color = 'powderblue';
+          i++;
+      }
       } else {
         target.style.backgroundColor = 'white';
         target.style.color = 'black';
         this.value = 'NIGHT';
 
-        var links = document.querySelectorAll('a');
+        // var links = document.querySelectorAll('a');
+        // var i = 0;
+        // while(i < links.length) {
+        //  links[i].style.color = 'blue';
+        //  i++;
+        // }
+        var alist = document.querySelectorAll('a');
         var i = 0;
-        while(i < links.length) {
-         links[i].style.color = 'blue';
-         i++;
+        while(i < alist.length) {
+            alist[i].style.color = 'blue';
+            i++;
         }
       }
       ">
