@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="hi" type="button" value="HI">
+
+    <script>
+        const hiBtn = document.querySelector('#hi');
+        hiBtn.addEventListener("click", hiAlert);
+
+        function hiAlert() {
+            alert('hi');
+        }
+
+        elementList = [
+            {
+                name : 'Joshua',
+                key : 'home'  },
+            {
+                name : 'Yenone',
+                key : 'home'  },
+            {
+                name : 'Jackson',
+                key : 'company'
+            },
+            {
+                name : 'Bind',
+                key : 'compnay'
+            }];
+
+        function homeFilter() {
+            return console.log(elementList.filter(function(element) {
+                return element.key === 'home';
+            }))
+        }
+
+        homeFilter();
+    </script>
+</body>
+</html>

@@ -4,9 +4,45 @@
 <head>
   <title>WEB1 - HTML</title>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .js {
+      font-weight: bold;
+    }
+
+  </style>
 </head>
 <body>
   <h1><a href="index.html">WEB</a></h1>
+  <span>
+    <button class="dayNight">NIGHT</button>
+    <input type="button" value="NIGHT" onclick="
+    var target = document.querySelector('body');
+    if(this.value === 'NIGHT') {
+       target.style.backgroundColor = 'black';
+       target.style.color = 'white';
+       this.value = 'DAY';
+
+       var links = document.querySelectorAll('a');
+       var i = 0;
+       while(i < links.length) {
+         links[i].style.color = 'powderblue';
+         i++;
+       }
+      } else {
+        target.style.backgroundColor = 'white';
+        target.style.color = 'black';
+        this.value = 'NIGHT';
+
+        var links = document.querySelectorAll('a');
+        var i = 0;
+        while(i < links.length) {
+         links[i].style.color = 'blue';
+         i++;
+        }
+      }
+      ">
+  </span>
 <ul>
   <li><a href="1.html">HTML</a></li>
   <li><a href="2.html">CSS</a></li>
@@ -24,13 +60,13 @@
 </p>
 <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">HTML</a>
   <p style="margin-top: 20px;">
-    Adding a native map viewer for the Web platform, similar to how HTML was added for video content; Standardizing how
+    Adding a native map viewer for the Web platform, <span class="js">similar to how HTML was added for video content;</span> Standardizing how
     a browser-based map viewer fetches data from map services and how that data
     should be formatted; Creating accessible Web map experiences that adapt to the different ways people interact with
     the Web; Creating truly global Web map experiences that work with different
-    languages and cartographic practices; Limiting privacy and security impacts of a more geo-enhanced Web. For more
+    languages and cartographic practices; <span class="js">Limiting privacy and security impacts of a more geo-enhanced Web.</span> For more
     information on the workshop, please see details and submission instructions.
-    Expression of Interest and position statements are due by 30 June 2020 and registration applications accepted until
+    <span class="js">Expression of Interest and position statements</span> are due by 30 June 2020 and registration applications accepted until
     31 August 2020. Hypertext Markup Language (HTML) is the standard markup language
     for documents designed to be displayed in a <strong><u>web</u> browser</strong>. It can be assisted by technologies
     such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
@@ -52,6 +88,20 @@
     2020 and registration applications accepted until 31 August 2020.
   </p>
   <!-- <img src="skywithflower.jpg" style="width: 100%;" /> -->
+
+  <input type="button" value="NIGHT" onclick="
+    var target = document.querySelector('body');
+    if(this.value === 'NIGHT') {
+      target.style.backgroundColor = 'black';
+       target.style.color = 'white';
+       this.value = 'DAY';
+      } else {
+        target.style.backgroundColor = 'white';
+        target.style.color = 'black';
+        this.value = 'NIGHT';
+      }
+      ">
+
   <div id="disqus_thread"></div>
   <script>
 
@@ -72,7 +122,7 @@
   })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  
+
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -87,5 +137,6 @@
   </script>
   <!--End of Tawk.to Script-->
 
+  <script src="index.js"></script>
 </body>
 </html>
