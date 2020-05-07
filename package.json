@@ -1,0 +1,8 @@
+{
+    "name": "eslint-config-[BeginWeb]",
+    "peerDependencies": {
+      "eslint": ">=6",
+      "eslint-plugin-import": "^2.18.2"
+        // ...
+    }
+  }
