@@ -1,0 +1,81 @@
+/* Common */
+html,
+body {
+    font-family: "Youth", "Noto Serif", "serif";
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+a,
+button {
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+/* white theme */
+/* white theme - header */
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+header .hd_logo h1 a {
+    color: #495057;
+}
+
+header .hd_logo h1 a:hover {
+    color: #ff6b6b;
+}
+
+/* header */
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header .hd_logo {
+    padding: 0 1em;
+}
+
+header .hd_logo h1 {
+    font-size: 2em;
+}
+
+
+/* large */
+@media screen and (max-width: 1024px) {
+    /* header */
+}
+
+/* middle media */
+@media screen and (max-width: 768px) {
+
+    /* header */
+    header {
+        border: none !important;
+    }
+
+    header .hd_logo {
+        /* 모바일 화면에서는 검색창만 보일 수 있도록 로고를 없애기 */
+        display: none;
+    }
+
+    header .hd_logo h1 {
+        font-size: 1.25em;
+    }
+}
