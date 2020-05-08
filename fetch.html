@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <article></article>
+    <input type="button" value="fetch" onclick="ajax()">
+    
+    <script>
+        function ajax() {
+            // fetch('html').then(function(response) {
+            //     response.text().then(function(text) {
+            //         alert(text);
+            //         document.querySelector('article').innerHTML = text;
+            //     })
+            // })
+            
+            //Asynchronous(비동기)
+
+            // function callBackMe() {
+            //     console.log('response end');
+            //     return 'callBackme';
+            // }
+            // callBackMe = function() {
+            //     console.log('response end');
+            // }
+            // function callBackMe2(message) {
+            //     if(message === 'callBackMe') {
+            //         console.log(message);
+            //         console.log('true');
+            //         return 'true';
+            //     } else {
+            //         console.log(message);
+            //         console.log('false');
+            //         return 'false';
+            //     }
+            // }
+
+            // fetch('html').then(function(response) {
+            //     console.log(response);
+            // });
+            fetch('javascript').then(function(response) {
+                var str = 'string';
+                console.log(typeof str);
+                console.log(response.status);
+                console.log(typeof response.status);
+                if(response.status === 404) {
+                    alert('Not found');
+                } else {
+                    alert('Success');
+                }
+            });
+            console.log(1);
+            console.log(2);
+
+        }
+    </script>
+</body>
+
+</html>
