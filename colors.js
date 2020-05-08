@@ -1,3 +1,11 @@
+const main = document.querySelector(".main"),
+who = document.querySelector('.who'),
+guest = document.querySelector('.guest');
+
+const info = document.querySelectorAll(".main, .who, .guest");
+
+const article = document.querySelector('.article');
+
 const Links = {
     setColor: function (color) {
         //     var alist = document.querySelectorAll('a');
@@ -39,4 +47,28 @@ function nightDayHandler(self) {
     }
 }
 
+function fetchPage(name) {
+    fetch(name).then(function(response) {
+        return response.text().then(function(text) {
+            article.innerHTML = text;
+        });
+    });
+}
 
+function getPage(dom, domClassName) {
+    dom.addEventListener("click", function(event) {
+        fetch(domClassName + '.html').then(function(response) {
+            return response.text().then(function(text) {
+                article.innerHTML = text;
+            });
+        });
+    });
+}
+
+function init() {
+    info.forEach(element => {
+        getPage(element, element.className);
+    });
+}
+
+init();
