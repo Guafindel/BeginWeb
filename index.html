@@ -6,8 +6,9 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="nav.css" />
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="">
   <style>
     .js {
       font-weight: bold;
@@ -21,14 +22,12 @@
     <header>
       <!-- header - LOGO -->
       <div class="hd_logo">
-        <h1><a href="#">용사지망생의 보관함</a></h1>
+        <h1><a class="welcome">용사지망생의 보관함</a></h1>
       </div>
     </header>
     <nav class="nav">
       <ul class="menu">
-        <li><a class="main">Main</a></li>
-        <li><a class="who">Who</a></li>
-        <li><a class="guest">Guest</a></li>
+        
         <!-- <li><a onclick="fetchPage('main.html')">Main</a></li>
         <li><a onclick="fetchPage('who.html')">Who</a></li>
         <li><a onclick="fetchPage('guest.html')">Guest</a></li> -->
@@ -54,9 +53,8 @@
       <div id="disqus_thread"></div>
     </footer>
   </div>
-
-
-  <!-- <script>
+  
+  <script>
     /**
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
@@ -75,10 +73,10 @@
     })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-      Disqus.</a></noscript> -->
+      Disqus.</a></noscript>
 
   <!--Start of Tawk.to Script-->
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     var Tawk_API = Tawk_API || {},
       Tawk_LoadStart = new Date();
     (function () {
@@ -90,9 +88,18 @@
       s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);
     })();
-  </script> -->
+  </script>
   <!--End of Tawk.to Script-->
+  <script>
+    // fetch('list').then(function(response) {
+    //   return response.text().then(function(text) {
+    //     document.querySelector('.menu').innerHTML = text;
+    //   })
+    // })
+  </script>
+  
   <script src="colors.js"></script>
+  
 </body>
 
 </html>

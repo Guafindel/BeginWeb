@@ -1,9 +1,3 @@
-const main = document.querySelector(".main"),
-who = document.querySelector('.who'),
-guest = document.querySelector('.guest');
-
-const info = document.querySelectorAll(".main, .who, .guest");
-
 const article = document.querySelector('.article');
 
 const Links = {
@@ -48,17 +42,17 @@ function nightDayHandler(self) {
 }
 
 function fetchPage(name) {
-    fetch(name).then(function(response) {
-        return response.text().then(function(text) {
+    fetch(name).then(function (response) {
+        return response.text().then(function (text) {
             article.innerHTML = text;
         });
     });
 }
 
 function getPage(dom, domClassName) {
-    dom.addEventListener("click", function(event) {
-        fetch(domClassName + '.html').then(function(response) {
-            return response.text().then(function(text) {
+    dom.addEventListener("click", function (event) {
+        fetch(domClassName).then(function (response) {
+            return response.text().then(function (text) {
                 article.innerHTML = text;
             });
         });
@@ -67,19 +61,33 @@ function getPage(dom, domClassName) {
 
 function getHash() {
     if (location.hash) {
-        //console.log(location.hash.substr(1));
+        fetchPage(location.hash.substring(2));
     } else {
-        console.log("doesn`t exish");
+        fetchPage('welcome');
     }
 }
 
 function init() {
-    info.forEach(element => {
-        getPage(element, element.className);
-        element.href = "#!" + element.className;
-    });
+    fetch('list').then(function (response) {
+        return response.text().then(function (text) {
+            console.log(text);
+            //<li><a class=""></a></li>
+            document.querySelector('.menu').innerHTML = text;
+        })
+    }).then(function() {
+        const info = document.querySelectorAll(".main, .who, .guest, .welcome");
+
+        info.forEach(element => {
+            getPage(element, element.className);
+            element.href = "#!" + element.className;
+        });
+    })
+    
+    getHash();
+
+    
+
+
 }
 
 init();
-
-console.log("체크");
