@@ -65,10 +65,21 @@ function getPage(dom, domClassName) {
     });
 }
 
+function getHash() {
+    if (location.hash) {
+        //console.log(location.hash.substr(1));
+    } else {
+        console.log("doesn`t exish");
+    }
+}
+
 function init() {
     info.forEach(element => {
         getPage(element, element.className);
+        element.href = "#!" + element.className;
     });
 }
 
 init();
+
+console.log("체크");
