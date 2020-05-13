@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input style="display:none" type="file" id="real-input" class="image_inputType_file" accept="img/*" required
+        multiple>
+    <button class="browse-btn">사진업로드</button>
+
+    <br><br><br><br><br>
+    <h3>Original base64 image (code 5):</h3>
+    <img id="image-original" src="">
+    <br>
+    <button class="resetBtn">Reset base64 image:</button>
+
+    <img id="image-reset" src="" />
+
+    <script src="rotation.js"></script>
+</body>
+
+</html>
