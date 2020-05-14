@@ -92,6 +92,8 @@ function resetOrientation(srcBase64, srcOrientation, callback) {
         callback(canvas.toDataURL());
 
     };
+    console.log(img);
+    console.log(srcBase64);
 
     img.src = srcBase64;
 }
