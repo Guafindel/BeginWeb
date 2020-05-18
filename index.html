@@ -4,22 +4,19 @@
 <head>
   <title>Guifindel`s home</title>
   <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="nav.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="shortcut icon" href="">
-  <style>
-    .js {
-      font-weight: bold;
-    }
-  </style>
+  
 </head>
 
 <body>
   <div id="wrap">
     <!-- header -->
     <header>
+      <input type="button" value="checking..." id="authBtn">
+      <span class="fbName"></span>
       <!-- header - LOGO -->
       <div class="hd_logo">
         <h1><a class="welcome">용사지망생의 보관함</a></h1>
@@ -27,10 +24,6 @@
     </header>
     <nav class="nav">
       <ul class="menu">
-        
-        <!-- <li><a onclick="fetchPage('main.html')">Main</a></li>
-        <li><a onclick="fetchPage('who.html')">Who</a></li>
-        <li><a onclick="fetchPage('guest.html')">Guest</a></li> -->
       </ul>
     </nav>
 
@@ -38,7 +31,7 @@
       <div id="main">
         <span>
           <!-- <button class="dayNight">NIGHT</button> -->
-          <input type="button" value="NIGHT" onclick="nightDayHandler(this)">
+          <!-- <input type="button" value="NIGHT" onclick="nightDayHandler(this)"> -->
         </span>
         <h2>WEB</h2>
         <p>
@@ -53,53 +46,15 @@
       <div id="disqus_thread"></div>
     </footer>
   </div>
-  
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function () { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://guifindel.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-      Disqus.</a></noscript>
 
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-      Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/5eb21491a1bad90e54a20bad/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-  <!--End of Tawk.to Script-->
-  <script>
-    // fetch('list').then(function(response) {
-    //   return response.text().then(function(text) {
-    //     document.querySelector('.menu').innerHTML = text;
-    //   })
-    // })
-  </script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="fetch-2.0.4/fetch.js"></script>
+  <script src="fb.js"></script>
+  <script src="disqus.js"></script>
+  <script src="tawk.js"></script>
   <script src="colors.js"></script>
   
+
 </body>
 
 </html>

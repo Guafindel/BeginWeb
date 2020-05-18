@@ -1,4 +1,5 @@
 const article = document.querySelector('.article');
+const menu = document.querySelector('.menu');
 
 const Links = {
     setColor: function (color) {
@@ -70,9 +71,24 @@ function getHash() {
 function init() {
     fetch('list').then(function (response) {
         return response.text().then(function (text) {
-            console.log(text);
-            //<li><a class=""></a></li>
-            document.querySelector('.menu').innerHTML = text;
+            const textArr = text.split(',');
+
+            textArr.forEach(function(element) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.className = element;
+                let upperElement = element.substring(0, 1);
+                let lowerElement = element.substring(1);
+                upperElement = upperElement.toUpperCase();
+                const tagContent = upperElement + lowerElement;
+                a.textContent = tagContent;
+                li.appendChild(a);
+                menu.appendChild(li);
+                //document.querySelector('.menu').innerHTML = ('<li class="'+ element +'">'+ element +'</li>');
+                //var li = document.createElement('li');
+                //li.className = element;
+                //document.querySelector('.menu').appendChild(li);
+            })
         })
     }).then(function() {
         const info = document.querySelectorAll(".main, .who, .guest, .welcome");
@@ -81,13 +97,8 @@ function init() {
             getPage(element, element.className);
             element.href = "#!" + element.className;
         });
-    })
-    
+    }) 
     getHash();
-
-    
-
-
 }
 
 init();
