@@ -73,7 +73,7 @@ function init() {
         return response.text().then(function (text) {
             const textArr = text.split(',');
 
-            textArr.forEach(function(element) {
+            textArr.forEach(function (element) {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.className = element;
@@ -90,14 +90,14 @@ function init() {
                 //document.querySelector('.menu').appendChild(li);
             })
         })
-    }).then(function() {
-        const info = document.querySelectorAll(".main, .who, .guest, .welcome");
+    }).then(function () {
+        const info = document.querySelectorAll(".main, .who, .guest");
 
         info.forEach(element => {
             getPage(element, element.className);
             element.href = "#!" + element.className;
         });
-    }) 
+    })
     getHash();
 }
 
