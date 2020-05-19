@@ -5,96 +5,46 @@ var url = require('url');
 var app = http.createServer(function (request, response) {
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
+    var pathname = url.parse(_url, true).pathname;
+    var path = url.parse(_url, true).path;
     var title = queryData.id;
-    if (_url == '/') {
-        title = 'Welcome';
-    }
-    if (_url == '/favicon.ico') {
+
+    console.log(url.parse(_url, true));
+    if(pathname === '/') {
+        if(path === '/') {
+            title = 'welcome';
+        }
+        fs.readFile(`data/${title}`, 'utf8', function (err, description) {
+            var template = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>WEB1 - ${title}</title>
+                <meta charset="utf-8" />
+            </head>
+            <body>
+                <h1><a href="/">WEB</a></h1>
+                <ul>
+                    <li><a href="/?id=main">Main</a></li>
+                    <li><a href="/?id=who">Who</a></li>
+                    <li><a href="/?id=guest">Guest</a></li>
+                </ul>
+                <h2>${title}</h2>
+                <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4JJFrjkRxmo" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </p>
+                ${description}
+            </body>
+            </html>
+            `;
+            response.writeHead(200);
+            response.end(template);
+        })
+    } else {
         response.writeHead(404);
-        response.end();
-        return;
+        response.end('Not found');
     }
-    response.writeHead(200);
-    var template = `
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-    <title>WEB1 - ${title}</title>
-    <meta charset="utf-8" />
-    </head>
-
-    <body>
-    <h1><a href="/">WEB</a></h1>
-    <span>
-        <!-- <button class="dayNight">NIGHT</button> -->
-        <input type="button" value="NIGHT" onclick="nightDayHandler(this)">
-    </span>
-    <ul>
-        <li><a href="/?id=HTML">HTML</a></li>
-        <li><a href="/?id=CSS">CSS</a></li>
-        <li><a href="/?id=Javascript">JavaScript</a></li>
-    </ul>
-    <ul>
-        <li>Joshua</li>
-        <li>Guafindel</li>
-        <li>Guifindel</li>
-    </ul>
-    <h2>${title}</h2>
-    <p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4JJFrjkRxmo" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </p>
-    <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">HTML</a>
-        <p style="margin-top: 20px;">
-        Adding a native map viewer for the Web platform, similar to how HTML was added for video content; Standardizing
-        how
-        a browser-based map viewer fetches data from map services and how that data
-        should be formatted; Creating accessible Web map experiences that adapt to the different ways people interact with
-        the Web; Creating truly global Web map experiences that work with different
-        languages and cartographic practices; Limiting privacy and security impacts of a more geo-enhanced Web. For more
-        information on the workshop, please see details and submission instructions.
-        Expression of Interest and position statements are due by 30 June 2020 and registration applications accepted
-        until
-        31 August 2020. Hypertext Markup Language (HTML) is the standard markup language
-        for documents designed to be displayed in a <strong><u>web</u> browser</strong>. It can be assisted by
-        technologies
-        such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
-        </p>
-        <p style="margin-top: 30px;">
-        W3C announced today the W3C/OGC Joint Workshop Series on Maps for the Web, in September & October, 2020. The event
-        is hosted by Natural Resources Canada. The workshop will be online only, spread
-        out over a month of video presentations and asynchronous discussion. Attendance is free for all invited
-        participants
-        and is open to the public, whether or not W3C members. This workshop series
-        brings together experts in geographic standards and Web map data services, Web mapping client tools and
-        applications, and Web platform standards and browser development, to explore the potential
-        of maps for the Web. Expected topics of discussion include: Adding a native map viewer for the Web platform,
-        similar
-        to how HTML was added for video content; Standardizing how a browser-based map
-        viewer fetches data from map services and how that data should be formatted; Creating accessible Web map
-        experiences
-        that adapt to the different ways people interact with the Web; Creating truly
-        global Web map experiences that work with different languages and cartographic practices; Limiting privacy and
-        security impacts of a more geo-enhanced Web. For more information on the workshop,
-        please see details and submission instructions. Expression of Interest and position statements are due by 30 June
-        2020 and registration applications accepted until 31 August 2020.
-        </p>
-        <!-- <img src="skywithflower.jpg" style="width: 100%;" /> -->
-
-        <div id="disqus_thread"></div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="fetch-2.0.4/fetch.js"></script>
-        <!-- <script src="fb.js"></script> -->
-        <script src="disqus.js"></script>
-        <script src="tawk.js"></script>
-        <script src="colors.js"></script>
-    </body>
-
-    </html>
-    `;
-    response.end(template);
-
+    
 });
 app.listen(3000);
