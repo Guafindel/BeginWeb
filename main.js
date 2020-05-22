@@ -42,14 +42,14 @@ function templateList(fileList) {
     return list;
 }
 
-var app = http.createServer(function (request, response) {
+var app = http.createServer(function(request, response) {
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
 
     if (pathname === '/') {
         if (queryData.id === undefined) {
-            fs.readdir('./data', function (err, fileList) {
+            fs.readdir('./data', function(err, fileList) {
                 var title = 'Welcome';
                 var description = 'Hello, Node.js';
                 var list = templateList(fileList);
@@ -59,8 +59,8 @@ var app = http.createServer(function (request, response) {
                 response.end(template);
             })
         } else {
-            fs.readdir('./data', function (err, fileList) {
-                fs.readFile(`data/${queryData.id}`, 'utf8', function (err, description) {
+            fs.readdir('./data', function(err, fileList) {
+                fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description) {
                     var title = queryData.id;
                     var list = templateList(fileList);
                     var template = templateHTML(title, list, description,
@@ -71,7 +71,7 @@ var app = http.createServer(function (request, response) {
             });
         }
     } else if (pathname === '/create') {
-        fs.readdir('./data', function (err, fileList) {
+        fs.readdir('./data', function(err, fileList) {
             var title = 'WEB - Create';
             var list = templateList(fileList);
             var template = templateHTML(title, list, `
@@ -92,7 +92,7 @@ var app = http.createServer(function (request, response) {
         })
     } else if (pathname === '/create_process') {
         var body = '';
-        request.on('data', function (data) {
+        request.on('data', function(data) {
             body += data;
             // Too much POST data, kill the connection!
             // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
@@ -100,12 +100,12 @@ var app = http.createServer(function (request, response) {
                 request.connection.destroy();
             }
         })
-        request.on('end', function () {
+        request.on('end', function() {
             var post = qs.parse(body);
             var title = post.title;
             var description = post.description;
 
-            fs.writeFile(`data/${title}`, `<p>${description}</p>`, 'utf8', function (err) {
+            fs.writeFile(`data/${title}`, description, 'utf8', function(err) {
                 response.writeHead(302, {
                     Location: `/?id=${title}`
                 });
@@ -114,8 +114,8 @@ var app = http.createServer(function (request, response) {
         });
 
     } else if (pathname === '/update') {
-        fs.readdir('./data', function (err, fileList) {
-            fs.readFile(`data/${queryData.id}`, 'utf8', function (err, description) {
+        fs.readdir('./data', function(err, fileList) {
+            fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description) {
                 var title = queryData.id;
                 var list = templateList(fileList);
                 var template = templateHTML(title, list, `
@@ -136,9 +136,9 @@ var app = http.createServer(function (request, response) {
                 response.end(template);
             })
         });
-    } else if(pathname === '/update_process') {
+    } else if (pathname === '/update_process') {
         var body = '';
-        request.on('data', function (data) {
+        request.on('data', function(data) {
             body += data;
             // Too much POST data, kill the connection!
             // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
@@ -146,18 +146,21 @@ var app = http.createServer(function (request, response) {
                 request.connection.destroy();
             }
         })
-        request.on('end', function () {
+        request.on('end', function() {
             var post = qs.parse(body);
             var id = post.id;
             var title = post.title;
             var description = post.description;
-
-            fs.writeFile(`data/${id}`, `<p>${description}</p>`, 'utf8', function (err) {
+            console.log(post);
+            /*
+            fs.writeFile(`data/${id}`, description, 'utf8', function (err) {
                 response.writeHead(302, {
                     Location: `/?id=${id}`
                 });
                 response.end('success');
             })
+            */
+
         });
     } else {
         response.writeHead(404);
