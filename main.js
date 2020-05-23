@@ -140,27 +140,21 @@ var app = http.createServer(function(request, response) {
         var body = '';
         request.on('data', function(data) {
             body += data;
-            // Too much POST data, kill the connection!
-            // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
-            if (body.length > 1e6) {
-                request.connection.destroy();
-            }
-        })
+        });
         request.on('end', function() {
             var post = qs.parse(body);
             var id = post.id;
             var title = post.title;
             var description = post.description;
             console.log(post);
-            /*
-            fs.writeFile(`data/${id}`, description, 'utf8', function (err) {
-                response.writeHead(302, {
-                    Location: `/?id=${id}`
-                });
-                response.end('success');
+            fs.rename(`data/${id}`, `data/${title}`, function(error) {
+                fs.writeFile(`data/${title}`, description, 'utf8', function(err) {
+                    response.writeHead(302, {
+                        Location: `/?id=${title}`
+                    });
+                    response.end();
+                })
             })
-            */
-
         });
     } else {
         response.writeHead(404);
