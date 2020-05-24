@@ -146,7 +146,6 @@ var app = http.createServer(function(request, response) {
             var id = post.id;
             var title = post.title;
             var description = post.description;
-            console.log(post);
             fs.rename(`data/${id}`, `data/${title}`, function(error) {
                 fs.writeFile(`data/${title}`, description, 'utf8', function(err) {
                     response.writeHead(302, {
@@ -156,6 +155,17 @@ var app = http.createServer(function(request, response) {
                 })
             })
         });
+    } else if(pathname === '/delete') {
+          var body = '';
+         request.on('data', function(data) {
+            body += data;
+        }
+         request.on('end', function() {
+            var post = qs.parse(body);
+            var id = post.id;
+            var title = post.title;
+            var description = post.desscription;
+            
     } else {
         response.writeHead(404);
         response.end('Not found');
