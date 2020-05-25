@@ -19,7 +19,17 @@
             <input type="submit" value="submit">
         </p>
     </form>
-    <img src="../IMAGE/skywithflower.jpg" id="imgSrc" alt="" srcset="">
+    <img src="../IMAGE/1.jpg" id="imgSrc" alt="" srcset="">
+    <button onclick="checkImage()">이미지 크기 체크</button>
+    <script>
+        function checkImage() {
+            var imgwidth = document.querySelector("#imgSrc").naturalWidth;
+            var imgheight = document.querySelector("#imgSrc").naturalHeight;
+
+            console.log(`width = ${imgwidth}`);
+            console.log(`height = ${imgheight}`);
+        }
+    </script>
 </body>
 
 </html>
