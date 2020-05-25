@@ -6,6 +6,8 @@ var path = require('path');
 
 var template = require('./lib/template.js');
 
+var sanitizeHtml = require('sanitize-html');
+
 function checkDelete() {
     if (confirm(`삭제하시겠습니까?`)) {
         return true;
@@ -35,12 +37,16 @@ var app = http.createServer(function (request, response) {
                 var filteredId = path.parse(queryData.id).base;
                 fs.readFile(`data/${filteredId}`, 'utf8', function (err, description) {
                     var title = queryData.id;
+                    var sanitizedTitle = sanitizeHtml(title);
+                    var sanitizeDescription = sanitizeHtml(description, {
+                        allowedTags: ['h2'],
+                    });
                     var list = template.List(fileList);
-                    var html = template.HTML(title, list, description,
+                    var html = template.HTML(sanitizedTitle, list, sanitizeDescription,
                         `<a href="/create">Create</a> 
-                        <a href="/update?id=${title}">Update</a> 
+                        <a href="/update?id=${sanitizedTitle}">Update</a> 
                         <form action="delete_process" method="post" onsubmit="checkDelete()">
-                            <input type="hidden" name="id" value="${title}">
+                            <input type="hidden" name="id" value="${sanitizedTitle}">
                             <input type="submit" value="Delete">
                         </form>`);
                     response.writeHead(200);
