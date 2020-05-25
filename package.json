@@ -1,0 +1,26 @@
+{
+  "name": "beginweb",
+  "version": "1.0.0",
+  "description": "What is Web",
+  "main": "main.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guafindel/BeginWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guafindel/BeginWeb/issues"
+  },
+  "homepage": "https://github.com/Guafindel/BeginWeb#readme",
+  "dependencies": {
+    "sanitize-html": "^1.24.0"
+  }
+}
