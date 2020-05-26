@@ -1,1 +1,1 @@
-alert('start begin ok');
+alert('start begin ok2');
