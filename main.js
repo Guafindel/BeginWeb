@@ -8,14 +8,6 @@ var template = require('./lib/template.js');
 
 var sanitizeHtml = require('sanitize-html');
 
-function checkDelete() {
-    if (confirm(`삭제하시겠습니까?`)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 var app = http.createServer(function (request, response) {
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
