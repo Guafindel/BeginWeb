@@ -32,3 +32,32 @@ init();
 
 // column(열) 하나의 속성, row(행) 한 줄의 데이터를 뜻함.
 
+// 테이블 생성
+// CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
+// species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+
+// primary key(기본키) 중복 방지와 성능을 위함.
+
+// 테이블 컬럼 확인
+// SHOW COLUMNS FROM table_name or DESC table_name
+
+// 테이블의 데이터 확인
+// SELECT * FROM table_name
+
+// update(수정)
+// 
+// UPDATE [LOW_PRIORITY] [IGNORE] table_references
+//     SET assignment_list
+//     [WHERE where_condition]
+
+// UPDATE t1 SET col1 = col1 + 1;
+
+// delete(삭제);
+// DELETE [LOW_PRIORITY] [QUICK] [IGNORE] FROM tbl_name [[AS] tbl_alias]
+// [PARTITION (partition_name [, partition_name] ...)]
+// [WHERE where_condition]
+// [ORDER BY ...]
+// [LIMIT row_count]
+
+// DELETE t1, t2 FROM t1 INNER JOIN t2 INNER JOIN t3
+// WHERE t1.id=t2.id AND t2.id=t3.id;
