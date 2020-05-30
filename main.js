@@ -169,19 +169,11 @@ var app = http.createServer(function (request, response) {
             var title = post.title;
             var description = post.description;
 
-            // fs.rename(`data/${id}`, `data/${title}`, function (error) {
-            //     fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
-            //         response.writeHead(302, {
-            //             Location: `/?id=${title}`
-            //         });
-            //         response.end();
-            //     })
-            // })
-
-            connection.query(`UPDATE SET topic(title, description, created, author_id) VALUES(?, ?, now(), ?)`, [
+            connection.query(`UPDATE topic SET id = ?, title = ?, description = ? WHERE id = ?`, [
+                id,
                 title,
                 description,
-                1
+                id
             ], function (error, results) {
                 if (error) {
                     throw error;
@@ -201,16 +193,28 @@ var app = http.createServer(function (request, response) {
             var post = qs.parse(body);
             var id = post.id;
             var filteredId = path.parse(id).base;
-            fs.unlink(`data/${filteredId}`, function (err) {
-                if (err) {
-                    throw err;
+            // fs.unlink(`data/${filteredId}`, function (err) {
+            //     if (err) {
+            //         throw err;
+            //     }
+            //     console.log(`data/${id} was deleted`);
+            //     response.writeHead(302, {
+            //         Location: `/`
+            //     });
+            //     response.end();
+            // });
+            connection.query(`DELETE FROM topic WHERE id = ?`, [
+                filteredId
+            ], function (error, results) {
+                if (error) {
+                    throw error;
                 }
-                console.log(`data/${id} was deleted`);
                 response.writeHead(302, {
                     Location: `/`
                 });
                 response.end();
-            });
+            })
+
         });
     } else {
         response.writeHead(404);
