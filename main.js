@@ -31,10 +31,6 @@ var app = http.createServer(function (request, response) {
                 var title = 'Welcome';
                 var description = 'Hello, Nodejs & MySQL';
 
-                // var titleArray = [];
-                // topics.forEach(element => {
-                //     titleArray.push(element.title);
-                // });
                 // topics.forEach(function(element) {
                 //     titleArray.push(element.title);
                 // })
