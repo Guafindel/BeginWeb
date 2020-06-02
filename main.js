@@ -33,7 +33,9 @@ var app = http.createServer(function (request, response) {
     } else if (pathname === '/author/update_process') {
         author.authorUpdateProcess(request, response);
     } else if (pathname === '/author/delete_process') {
-
+        author.authorDeleteProcess(request, response);
+    } else if(pathname === '/sort') {
+        topic.sortingHome(request, response);
     } else {
         response.writeHead(404);
         response.end('Not found');
