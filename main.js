@@ -3,6 +3,7 @@ var url = require('url');
 var topic = require('./lib/topic');
 var author = require('./lib/author');
 var sort = require('./lib/sort');
+var search = require('./lib/search');
 
 var app = http.createServer(function (request, response) {
     var _url = request.url;
@@ -36,7 +37,7 @@ var app = http.createServer(function (request, response) {
     } else if (pathname === '/author/delete_process') {
         author.authorDeleteProcess(request, response);
     } else if (pathname === '/sort') {
-        if(queryData.id === undefined) {
+        if (queryData.id === undefined) {
             sort.sortHome(request, response);
         } else {
             sort.sortPage(request, response);
@@ -51,6 +52,8 @@ var app = http.createServer(function (request, response) {
         sort.sortUpdate_process(request, response);
     } else if (pathname === '/sort/delete_process') {
         sort.sortDelete(request, response);
+    } else if (pathname === '/search') {
+        search.searchHome(request, response);
     } else {
         response.writeHead(404);
         response.end('Not found');
