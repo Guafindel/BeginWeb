@@ -54,6 +54,8 @@ var app = http.createServer(function (request, response) {
         sort.sortDelete(request, response);
     } else if (pathname === '/search') {
         search.searchHome(request, response);
+    } else if (pathname === `/paging`) {
+        paging.pagingHome(request, response);
     } else {
         response.writeHead(404);
         response.end('Not found');
