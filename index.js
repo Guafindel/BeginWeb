@@ -68,6 +68,48 @@ function getHash() {
     }
 }
 
+function checkSubmit() {
+    if (confirm('삭제하시겠어요?')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function divCheck() {
+    var totalNum = 25;
+    var countNum = 10;
+    var totalPage = Math.ceil(totalNum / countNum);
+
+    var page = 2;
+    var countPage = 10;
+
+    var startPage = Math.floor(((page - 1) / 10)) * 10 + 1;
+
+    var endPage = startPage + countPage - 1;
+
+    if (totalPage < page) {
+        page = totalPage;
+    }
+    if (endPage > totalPage) {
+        endPage = totalPage;
+    }
+
+    if (startPage > 1) {
+        console.log('처음');
+    }
+    if (page > 1) {
+        console.log('이전');
+    }
+    for (var iCount = startPage; iCount <= endPage; iCount++) {
+        if (iCount == page) {
+            console.log(iCount);
+        } else {
+            console.log(iCount);
+        }
+    }
+}
+
 function init() {
     fetch('list').then(function (response) {
         return response.text().then(function (text) {
@@ -99,6 +141,7 @@ function init() {
         });
     })
     getHash();
+    divCheck();
 }
 
 init();
