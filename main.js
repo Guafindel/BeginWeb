@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
 var topic = require('./lib/topic');
-var author = require('./lib/author');
+var author = require('./lib/expressLib');
 var sort = require('./lib/sort');
 var search = require('./lib/search');
 
