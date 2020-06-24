@@ -78,8 +78,7 @@ exports.home = function (request, response) {
 
 }
 exports.page = function (request, response) {
-    var _url = request.url;
-    var queryData = url.parse(_url, true).query;
+    var urlPathParmas = request.params;
     connection.query(`SELECT * FROM filter`, function (error1, filters) {
         if (error1) {
             throw error1;
@@ -88,7 +87,7 @@ exports.page = function (request, response) {
             if (error3) {
                 throw error3;
             }
-            connection.query(`SELECT a.id, a.title, a.description, a.created, b.name, b.profile FROM topic a LEFT JOIN author b ON a.author_id = b.id WHERE a.id = ?`, [queryData.id], function (error4, topic) {
+            connection.query(`SELECT a.id, a.title, a.description, a.created, b.name, b.profile FROM topic a LEFT JOIN author b ON a.author_id = b.id WHERE a.id = ?`, [urlPathParmas.pageId], function (error4, topic) {
                 if (error4) {
                     throw error4;
                 }
@@ -111,8 +110,7 @@ exports.page = function (request, response) {
                             <input type="hidden" name="id" value="${queryData.id}">
                             <input type="submit" value="Delete">
                         </form>`, filterBox, searchBox);
-                    response.writeHead(200);
-                    response.end(html);
+                    response.send(html);
                 })
             })
         })

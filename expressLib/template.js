@@ -76,7 +76,7 @@ module.exports = {
         topics.forEach(element => {
             if (element !== 'welcome') {
                 var onTitle = sanitizeHtml(this.upperString(element.title));
-                list = list + `<li><a href="/?id=${element.id}">${onTitle}</a></li>`
+                list = list + `<li><a href="/page/${element.id}">${onTitle}</a></li>`
             }
         });
         list = list + '</ul>';
