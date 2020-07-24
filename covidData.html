@@ -7,6 +7,39 @@
 </head>
 <body>
     <h1>hello covid</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div>
+          <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
+          <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+        </div>
+        <div class="preview">
+          <p>No files currently selected for upload</p>
+        </div>
+        <div class="kim">
+          <button>Submit</button>
+        </div>
+      </form>
+      <input type="file" name="images" id="images" onchange="checkFileList(this)" multiple style="width: 30px; vertical-align:top;">
+      <button id="checkBtn">Check</button>
+      <br><br>
+      <button onclick="addFile()">Try it!</button>
+      <br><br>
+      <span id="inputFiles"></span>
+      <span id="deleteBtns"></span>
+      <table>
+        <thead>
+          <tr>
+            <td>확인</td>
+            <td>확인</td>
+            <td>확인</td>
+          </tr>
+        </thead>
+        <tbody id="timeTotr">
+
+        </tbody>
+
+      </table>
+      <div id="newDiv"></div>
     <script src="covidData.js"></script>
 </body>
 </html>
